@@ -9,6 +9,8 @@ from addressnet.lookups import street_types, street_type_abbreviation, states, s
 from addressnet.model import model_fn
 from functools import lru_cache
 
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
 
 def _get_best_match(target: str, candidates: Union[List[str], Dict[str, str]], keep_idx: int = 0) -> str:
     """
