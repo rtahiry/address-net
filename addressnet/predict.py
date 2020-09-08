@@ -1,6 +1,10 @@
 import os
 from typing import Dict, List, Union
 import textdistance
+
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import tensorflow as tf
 
 from addressnet.dataset import predict_input_fn, labels_list
@@ -9,7 +13,7 @@ from addressnet.lookups import street_types, street_type_abbreviation, states, s
 from addressnet.model import model_fn
 from functools import lru_cache
 
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.FATAL)
 
 
 def _get_best_match(target: str, candidates: Union[List[str], Dict[str, str]], keep_idx: int = 0) -> str:
